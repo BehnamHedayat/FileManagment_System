@@ -7,7 +7,7 @@ class Folder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} {self.user}"
 
 
 class File(models.Model):
@@ -16,4 +16,4 @@ class File(models.Model):
     file = models.FileField(upload_to='files/')
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.name} {self.folder}"
