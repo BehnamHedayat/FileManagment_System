@@ -19,13 +19,9 @@
         {% endfor %}
     </ul>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {% csrf_token %}
-        {{form.as_p}}
 
-        <button type="submit">submit</button>
-    </form>
+
+    <button><a href="{% url 'creatfolder' %}">+ CREATE FOLDER</a></button>
     
 </body>
 </html>
