@@ -1,10 +1,10 @@
 
 from django.urls import path
-from .views import Folders,Files,CreateFolder 
+from .views import Folders,Files
 
 
 urlpatterns = [
    path('',Folders),
    path('<int:id>/',Files,name='file'),
-   path('create',CreateFolder,name='creatfolder')
+   #path('create',CreateFolder,name='creatfolder')
 ]
