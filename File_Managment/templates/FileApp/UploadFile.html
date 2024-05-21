@@ -12,19 +12,11 @@
     <title>Document</title>
 </head>
 <body class="container">
-    <H2>{{selected_Folder.name}}</H2>
-    <hr>
-    <ul>
-        {% for file in Files.all %}
-        <li>
-            {{file}}
-        </li>
-        {% endfor %}
-    </ul>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
 
-    <button><a href="{% url 'uploadfile' %}">UPLOAD FILE</a></button>
-
-
-    
+        <button type="submit">submit</button>
+    </form>
 </body>
 </html>
