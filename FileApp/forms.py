@@ -12,4 +12,4 @@ class FolderForm(forms.ModelForm):
 class FileForm(forms.ModelForm):
     class Meta:
         model = File
-        fields = ['name','folder']
+        fields = ['name','folder','file']

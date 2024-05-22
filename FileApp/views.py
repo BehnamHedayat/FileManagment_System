@@ -17,7 +17,7 @@ def Folders(request):
     return render(request,"FileApp/Folders.html", {"Folders": Folders })
 
 
-
+@login_required
 def Files(request, id):
     selected_Folder = Folder.objects.get(id=id)
     Files = selected_Folder.Files 
@@ -38,7 +38,7 @@ def CreateFolder(request):
             return render(request,"FileApp/CreateFolder.html", {"form": form })  
     return render(request,"FileApp/CreateFolder.html",{"form":form})
 
-
+@login_required
 def UploadFile(request):
     form = FileForm()
     if request.method == "POST":
@@ -47,5 +47,9 @@ def UploadFile(request):
             form.save()
             return render (request,"FileApp/UploadFile.html",{"form":form})
 
-    return render (request,"FileApp/UploadFile.html",{"form":form})                                                                                                                                 
+    return render (request,"FileApp/UploadFile.html",{"form":form})  
+
+@login_required
+def Index(request):
+    return render(request, 'index.html')                                                                                                                               
                                                                                                                                                                                                                                                                                                                                   

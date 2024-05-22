@@ -12,7 +12,17 @@
     <title>Document</title>
 </head>
 <body class="container">
-    <H2>{{selected_Folder.name}}</H2>
+    <div class="row">
+        <div class="col-8 mt-5">
+            <H2>{{selected_Folder.name}}</H2>
+        </div>
+
+        <div class="col-4 mt-5">
+            <button class="btn btn-info"><a class="text-dark fw-bold" href="{% url 'uploadfile' %}">UPLOAD FILE</a></button>
+        </div>
+    
+
+    </div>
     <hr>
     <ul>
         {% for file in Files.all %}
@@ -22,7 +32,7 @@
         {% endfor %}
     </ul>
 
-    <button><a href="{% url 'uploadfile' %}">UPLOAD FILE</a></button>
+    
 
 
     
