@@ -47,17 +47,14 @@ def CreateFolder(request):
 def UploadFile(request):
     form = FileForm()
     if request.method == "POST":
-        form = FileForm(request.POST)
+        form = FileForm(request.POST,request.FILES)
         if form.is_valid():
+            form.instance.folder = request.folder
             form.save()
-            
-            return render (request,"FileApp/UploadFile.html",{"form":form})
-
+            return render (request,"FileApp/UploadFile.html",{"form":form, "message":"file uploaded"})
     return render (request,"FileApp/UploadFile.html",{"form":form})  
 
-@login_required
-def Index(request):
-    return render(request, 'index.html')  
+  
 
 def register(request):
     if request.method == 'POST':
