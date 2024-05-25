@@ -44,11 +44,13 @@ def CreateFolder(request):
     return render(request,"FileApp/CreateFolder.html",{"form":form})
 
 @login_required
-def UploadFile(request):
+def UploadFile(request, folder_id):
     form = FileForm()
     if request.method == "POST":
-        form = FileForm(request.POST)
+        form = FileForm(request.POST, request.FILES)
         if form.is_valid():
+            folder = Folder.objects.get(id=folder_id)
+            form.instance.folder = folder
             form.save()
             
             return render (request,"FileApp/UploadFile.html",{"form":form})

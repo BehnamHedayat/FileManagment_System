@@ -12,6 +12,6 @@ urlpatterns = [
    path('folders',Folders, name='folders'),
    path('<int:id>/',Files,name='file'),
    path('create',CreateFolder,name='creatfolder'),
-   path('upload',UploadFile,name='uploadfile'),
+   path('upload/<int:folder_id>',UploadFile,name='uploadfile'),
 
 ]
