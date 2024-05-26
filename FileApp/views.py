@@ -47,18 +47,19 @@ def CreateFolder(request):
 def UploadFile(request, folder_id):
     form = FileForm()
     if request.method == "POST":
-<<<<<<< HEAD
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
             folder = Folder.objects.get(id=folder_id)
             form.instance.folder = folder
-=======
-        form = FileForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.instance.folder = request.folder
->>>>>>> 3d1bc54965594d6668bd2b6119812ddd5ce833a2
             form.save()
-            return render (request,"FileApp/UploadFile.html",{"form":form, "message":"file uploaded"})
+            form = FileForm()
+            selected_Folder = Folder.objects.get(id=folder_id)
+            Files = selected_Folder.Files 
+            context = {
+                "selected_Folder": selected_Folder,
+                "Files": Files,
+            }
+            return render (request,"FileApp/Files.html",context)
     return render (request,"FileApp/UploadFile.html",{"form":form})  
 
   
