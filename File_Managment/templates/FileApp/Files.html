@@ -24,13 +24,29 @@
 
     </div>
     <hr>
-    <ul>
-        {% for file in Files.all %}
-        <li>
-            {{file}}
-        </li>
-        {% endfor %}
-    </ul>
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for file in Files.all %}
+            <tr>
+                <th scope="row">{{file.id}}</th>
+                <td>{{file.name}}</td>
+                <td>{{file.file}}</td>
+                <td>{{file.file_size_human_readable}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
 
     
 
